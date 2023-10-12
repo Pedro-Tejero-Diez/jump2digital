@@ -1,0 +1,124 @@
+{
+  "skins": [
+    {
+      "name": "Sleek Silver Sentinel",
+      "description": "A futuristic silver armor for high-tech battles.",
+      "author": "FuturisticDesigns",
+      "price": 600,
+      "color": "Silver",
+      "textures": {
+        "diffuse": "skin2_diffuse.png",
+        "normal_map": "skin2_normal.png",
+        "specular_map": "skin2_specular.png"
+      }
+    },
+    {
+      "name": "Crimson Avenger",
+      "description": "A fiery red suit for those seeking vengeance.",
+      "author": "VengefulGamer",
+      "price": 700,
+      "color": "Red",
+      "textures": {
+        "diffuse": "skin3_diffuse.png",
+        "normal_map": "skin3_normal.png",
+        "specular_map": "skin3_specular.png"
+      }
+    },
+    {
+      "name": "Arctic Explorer",
+      "description": "Icy blue attire for polar adventures.",
+      "author": "FrozenAdventures",
+      "price": 550,
+      "color": "Icy Blue",
+      "textures": {
+        "diffuse": "skin4_diffuse.png",
+        "normal_map": "skin4_normal.png",
+        "specular_map": "skin4_specular.png"
+      }
+    },
+    {
+      "name": "Neon Ninja",
+      "description": "A neon-clad ninja for the urban jungle.",
+      "author": "UrbanShadow",
+      "price": 800,
+      "color": "Neon Green",
+      "textures": {
+        "diffuse": "skin5_diffuse.png",
+        "normal_map": "skin5_normal.png",
+        "specular_map": "skin5_specular.png"
+      }
+    },
+    {
+      "name": "Golden Guardian",
+      "description": "A shining gold guardian to protect the realm.",
+      "author": "RealmProtectors",
+      "price": 750,
+      "color": "Gold",
+      "textures": {
+        "diffuse": "skin6_diffuse.png",
+        "normal_map": "skin6_normal.png",
+        "specular_map": "skin6_specular.png"
+      }
+    },
+    {
+      "name": "Desert Nomad",
+      "description": "Camouflaged attire for surviving the harshest deserts.",
+      "author": "DesertSurvivor",
+      "price": 600,
+      "color": "Tan and Brown",
+      "textures": {
+        "diffuse": "skin7_diffuse.png",
+        "normal_map": "skin7_normal.png",
+        "specular_map": "skin7_specular.png"
+      }
+    },
+    {
+      "name": "Aqua Explorer",
+      "description": "Dive into the depths with this aquatic explorer suit.",
+      "author": "UnderwaterAdventures",
+      "price": 900,
+      "color": "Aqua Blue",
+      "textures": {
+        "diffuse": "skin8_diffuse.png",
+        "normal_map": "skin8_normal.png",
+        "specular_map": "skin8_specular.png"
+      }
+    },
+    {
+      "name": "Space Pirate",
+      "description": "A swashbuckling space pirate outfit for interstellar adventures.",
+      "author": "CosmicPirates",
+      "price": 650,
+      "color": "Black and Red",
+      "textures": {
+        "diffuse": "skin9_diffuse.png",
+        "normal_map": "skin9_normal.png",
+        "specular_map": "skin9_specular.png"
+      }
+    },
+    {
+      "name": "Emerald Enchantress",
+      "description": "An enchanting emerald green robe for mystical powers.",
+      "author": "MysticMagicGuild",
+      "price": 850,
+      "color": "Emerald Green",
+      "textures": {
+        "diffuse": "skin10_diffuse.png",
+        "normal_map": "skin10_normal.png",
+        "specular_map": "skin10_specular.png"
+      }
+    },
+    {
+      "name": "Galactic Explorer",
+      "description": "An astronaut exploring the galaxy.",
+      "author": "GalaxyExplorersInc",
+      "price": 900,
+      "color": "Silver",
+      "textures": {
+        "diffuse": "skin11_diffuse.png",
+        "normal_map": "skin11_normal.png",
+        "specular_map": "skin11_specular.png"
+      }
+    }
+  ]
+}
