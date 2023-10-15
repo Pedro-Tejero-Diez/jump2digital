@@ -8,7 +8,9 @@ spring:
     enabled: true
   data:
     mongodb:
-      uri: mongodb://admin_challenge:BYBcMJEEWw5egRUo@localhost:27017/challenges
+     # host: localhost
+      #port: 27017
+      uri: mongodb://admin_challenge:BYBcMJEEWw5egRUo@localhost:27017/skins
       uuid-representation: standard
 
 server:
