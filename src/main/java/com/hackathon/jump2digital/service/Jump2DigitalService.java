@@ -8,4 +8,5 @@ import java.util.List;
 public interface Jump2DigitalService {
     public List<Skin> readJsonFile();
     public void savePlayer(Player player);
+    public void getPlayerById(String player_id);
 }
