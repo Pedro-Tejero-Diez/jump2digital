@@ -15,7 +15,7 @@ public class DtoConverter {
 
 
         return new playerDTO(player.getPlayer_id(),
-                player.getName(), player.getSkins());
+                player.getName(), player.getPlayerSkins());
     }
 
     public static Player toPlayer(playerDTO playerdto, String pwd) {

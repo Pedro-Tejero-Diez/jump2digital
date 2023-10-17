@@ -25,7 +25,7 @@ public class Player {
         private String pwd;
         @ReadOnlyProperty
         @DocumentReference(lookup="{'player':?#{#self._id} }")
-        private List<Skin> skins;
+        private List<PlayerSkin> playerSkins;
 
         public Player(LocalDate regdate, String name, String pwd) {
            this.regdate=LocalDate.now();
@@ -33,10 +33,10 @@ public class Player {
            this.pwd=pwd;
 
         }
-        public Player(LocalDate regdate, String name, String pwd, List<Skin> skins) {
+        public Player(LocalDate regdate, String name, String pwd, List<PlayerSkin> playerSkins) {
                 this.regdate=LocalDate.now();
                 this.name=name;
                 this.pwd=pwd;
-                this.skins=skins;
+                this.playerSkins=playerSkins;
         }
 }

@@ -1,5 +1,6 @@
 package com.hackathon.jump2digital.dto;
 
+import com.hackathon.jump2digital.document.PlayerSkin;
 import com.hackathon.jump2digital.document.Skin;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +16,7 @@ import java.util.List;
 public class playerDTO {
     private String player_id;
     private String name;
-    private List<Skin> skins;
+    private List<PlayerSkin> skins;
+
 
 }

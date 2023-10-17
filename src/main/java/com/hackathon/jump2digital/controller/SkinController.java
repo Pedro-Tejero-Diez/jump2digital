@@ -1,14 +1,17 @@
 package com.hackathon.jump2digital.controller;
 
 import com.hackathon.jump2digital.document.Player;
+import com.hackathon.jump2digital.document.PlayerSkin;
 import com.hackathon.jump2digital.document.Skin;
 import com.hackathon.jump2digital.dto.playerDTO;
 import com.hackathon.jump2digital.helper.DtoConverter;
 import com.hackathon.jump2digital.service.Jump2DigitalServiceImp;
+import com.hackathon.jump2digital.service.PlayerSkinServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,6 +21,8 @@ import java.util.List;
 public class SkinController {
     @Autowired
     Jump2DigitalServiceImp service;
+    @Autowired
+    PlayerSkinServiceImp playerskinservice;
 
     @GetMapping("/new")
     public String newPlayer(Model model) {
@@ -25,14 +30,6 @@ public class SkinController {
         model.addAttribute("player", player);
         return "new_player";
     }
-
-   /* @GetMapping("/")
-    public String jugadores(Model model) {
-        List<Jugador> jugadores = jugadorservice.getAllJugador();
-        model.addAttribute("jugadores",
-                jugadores.stream().map(JugadorMapper::toJugadorDTO).collect(Collectors.toList()));
-        return "listado_jugadores";
-    }*/
 
     @PostMapping("/add")
     public String savePlayer(@ModelAttribute("player") Player player) {
@@ -54,28 +51,18 @@ public class SkinController {
     }
 
     @GetMapping("/{player_id}/myskins")
-    public String playerSkins(@PathVariable(value = "player_id") String player_id, Model model) {
-
+    public String playerSkins(@PathVariable(value = "player_id") String player_id,
+                              @ModelAttribute PlayerSkin playerskin,
+                              RedirectAttributes ra, Model model) {
         try {
-            Player player = service.getPlayerById(player_id);
 
-            if (player != null) {
-                playerDTO playerdto = DtoConverter.toPlayerDTO(player);
-                List<Skin> skins = player.getSkins();
-                model.addAttribute("skins", skins);
-                model.addAttribute("player", playerdto);
-                return "player";
-            } else
-                return "not_found";
+            playerskinservice.savePlayerSkin(playerskin);
+            ra.addFlashAttribute("playerskin", playerskin);
+            return "redirect:/Skins/{player_id}/playerskins";
         } catch (Exception e) {
-            return "error";
+            throw new RuntimeException(e);
         }
+
     }
 
-    @PostMapping("/{player_id}/buy")
-    public String buySkin(@PathVariable(value = "player_id") String player_id, Model model) throws IOException {
-        Player player = service.getPlayerById(player_id);
-        service.buySkin(player, 1);
-        return "player";
-    }
 }
