@@ -4,6 +4,9 @@ import com.hackathon.jump2digital.document.PlayerSkin;
 import com.hackathon.jump2digital.service.Jump2DigitalServiceImp;
 import com.hackathon.jump2digital.service.PlayerSkinService;
 import com.hackathon.jump2digital.service.PlayerSkinServiceImp;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +36,7 @@ public class PlayerSkinController {
 
         @GetMapping("/{player_id}/playerskins")
         public String playerskinsscreen(@PathVariable("player_id") String id,
-                                        @ModelAttribute("playerskin") PlayerSkin playerskin,
+                                        @ModelAttribute("playerskin") List<PlayerSkin> playerskin,
                                      Model model) {
             return "playerskins";
         }

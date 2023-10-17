@@ -54,14 +54,12 @@ public class SkinController {
     public String playerSkins(@PathVariable(value = "player_id") String player_id,
                               @ModelAttribute PlayerSkin playerskin,
                               RedirectAttributes ra, Model model) {
-        try {
 
-            playerskinservice.savePlayerSkin(playerskin);
-            ra.addFlashAttribute("playerskin", playerskin);
+            if (service.getPlayerById(player_id)!=null) {
+            ra.addFlashAttribute("playerskin", service.getPlayerById(player_id)
+            		.getPlayerSkins());
             return "redirect:/Skins/{player_id}/playerskins";
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+            } else return "error";
 
     }
 
