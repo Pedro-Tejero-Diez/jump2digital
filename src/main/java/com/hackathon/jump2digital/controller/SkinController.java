@@ -7,6 +7,8 @@ import com.hackathon.jump2digital.dto.playerDTO;
 import com.hackathon.jump2digital.helper.DtoConverter;
 import com.hackathon.jump2digital.service.Jump2DigitalServiceImp;
 import com.hackathon.jump2digital.service.PlayerSkinServiceImp;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.List;
+
 
 @Controller
 @RequestMapping("/skins")
@@ -49,18 +52,39 @@ public class SkinController {
         model.addAttribute("skins", skins);
         return "skins"; // Return the Thymeleaf template name
     }
+	@GetMapping("/{player_id}/myskins")
+	public String playerSkins(@PathVariable(value = "player_id") 
+	String player_id, Model model) {
 
-    @GetMapping("/{player_id}/myskins")
+		try {
+			Player player = service.getPlayerById(player_id);
+			List<PlayerSkin> playerskin =  playerskinservice
+            		.getAllPlayerSkinByPlayer(player_id);
+			if (player != null) {
+				playerDTO playerdto = DtoConverter.toPlayerDTO(player);
+				model.addAttribute("playerskin",playerskin);
+				
+
+				model.addAttribute("player", playerdto);
+				return "player";
+			} else
+				return "no_encontrado";
+		} catch (Exception e) {
+			return "error";
+		}
+	}
+    /* esto es el redirect que use para hacer una nueva jugada y guardarla
+     * @PostMapping("/{player_id}/myskins")
     public String playerSkins(@PathVariable(value = "player_id") String player_id,
                               RedirectAttributes ra, Model model) {
 
             if (service.getPlayerById(player_id)!=null) {
-                List<PlayerSkin> playerskin =  service.getPlayerById(player_id)
-                        .getPlayerSkins();
+                List<PlayerSkin> playerskin =  playerskinservice
+                		.getAllPlayerSkinByPlayer(player_id);
             ra.addFlashAttribute("playerskin",playerskin);
             return "redirect:/Skins/{player_id}/playerskins";
             } else return "error";
 
-    }
+    }*/
 
 }

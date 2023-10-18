@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference;
 @NoArgsConstructor
 @Getter
 @Setter
-@Document(collection="player_skins")
+@Document(collection="playerskins")
 public class PlayerSkin {
 
         @Id
