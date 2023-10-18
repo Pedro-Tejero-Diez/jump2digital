@@ -26,13 +26,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="playerskin : ${playerskin}">
-                    <td th:text="${playerskin.player_skin_id}"></td>
-                    <td th:text="${playerskin.name}"></td>
-                    <td th:text="${playerskin.description}"></td>
-                    <td th:text="${playerskin.author}"></td>
-                    <td th:text="${playerskin.price}"></td>
-                    <td th:text="${playerskin.color}"></td>
+                <tr th:each="PlayerSkin : ${playerskin}">
+                    <td th:text="${PlayerSkin.player_skin_id}"></td>
+                    <td th:text="${PlayerSkin.name}"></td>
+                    <td th:text="${PlayerSkin.description}"></td>
+                    <td th:text="${PlayerSkin.author}"></td>
+                    <td th:text="${PlayerSkin.price}"></td>
+                    <td th:text="${PlayerSkin.color}"></td>
             </table>
             <a th:href="@{/Players/Ranking}" class="btn btn-primary btn-lg mb-3"> Ranking</a>
             <a th:href="@{/Players/}" class="btn btn-primary btn-lg mb-3"> Listado Jugadores</a>

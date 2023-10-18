@@ -52,12 +52,12 @@ public class SkinController {
 
     @GetMapping("/{player_id}/myskins")
     public String playerSkins(@PathVariable(value = "player_id") String player_id,
-                              @ModelAttribute PlayerSkin playerskin,
                               RedirectAttributes ra, Model model) {
 
             if (service.getPlayerById(player_id)!=null) {
-            ra.addFlashAttribute("playerskin", service.getPlayerById(player_id)
-            		.getPlayerSkins());
+                List<PlayerSkin> playerskin =  service.getPlayerById(player_id)
+                        .getPlayerSkins();
+            ra.addFlashAttribute("playerskin",playerskin);
             return "redirect:/Skins/{player_id}/playerskins";
             } else return "error";
 
