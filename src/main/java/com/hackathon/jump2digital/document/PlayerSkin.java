@@ -28,5 +28,10 @@ public class PlayerSkin {
                 this.regdate=regdate;
                 this.player=player;
         }
+        public PlayerSkin(Player player, Skin playerskin) {
+                this.regdate=LocalDate.now();
+                this.player=player;
+                this.playerSkin=playerskin;
+        }
 
 }

@@ -5,7 +5,7 @@ import com.hackathon.jump2digital.document.PlayerSkin;
 import com.hackathon.jump2digital.document.Skin;
 import com.hackathon.jump2digital.dto.playerDTO;
 import com.hackathon.jump2digital.helper.DtoConverter;
-import com.hackathon.jump2digital.service.Jump2DigitalServiceImp;
+import com.hackathon.jump2digital.service.PlayerServiceImp;
 import com.hackathon.jump2digital.service.PlayerSkinServiceImp;
 
 
@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,7 +22,7 @@ import java.util.List;
 @RequestMapping("/skins")
 public class SkinController {
     @Autowired
-    Jump2DigitalServiceImp service;
+    PlayerServiceImp service;
     @Autowired
     PlayerSkinServiceImp playerskinservice;
 
@@ -32,6 +31,12 @@ public class SkinController {
         Player player = new Player();
         model.addAttribute("player", player);
         return "new_player";
+    }
+    @GetMapping("/login")
+    public String login (Model model) {
+        Player player = new Player();
+        model.addAttribute("player", player);
+        return "login";
     }
 
     @PostMapping("/add")
@@ -46,12 +51,27 @@ public class SkinController {
         }
     }
 
-    @GetMapping("/available")
-    public String listSkins(Model model) throws IOException {
-        List<Skin> skins = service.readJsonFile();
-        model.addAttribute("skins", skins);
-        return "skins"; // Return the Thymeleaf template name
+    @GetMapping("/{player_id}/available")
+    public String listSkins(@PathVariable(value = "player_id")
+                                String player_id, @ModelAttribute("player") Player player,
+                            Model model) throws IOException {
+        if (service.existsById(player_id)) {
+            List<Skin> skins = service.readJsonFile();
+            model.addAttribute("skins", skins);
+            model.addAttribute("player", player);
+            return "skins";
+        } else {
+                return "not_found";
+        }
     }
+    @GetMapping("/skins/buy/")
+    public String butSkinPlayer (@ModelAttribute ("player") Player player,
+                                 @ModelAttribute("skin") Skin skin, Model model) {
+    playerskinservice.buySkinById(player, skin);
+    model.addAttribute("player_id", player.getPlayer_id());
+        return "redirect:/Skins/{player_id}/myskins";
+    }
+
 	@GetMapping("/{player_id}/myskins")
 	public String playerSkins(@PathVariable(value = "player_id") 
 	String player_id, Model model) {

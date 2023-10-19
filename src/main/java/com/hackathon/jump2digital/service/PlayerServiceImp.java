@@ -12,12 +12,11 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class Jump2DigitalServiceImp {
+public class PlayerServiceImp {
     @Autowired
     PlayerRepository playerrepository;
 
@@ -40,4 +39,10 @@ public class Jump2DigitalServiceImp {
         Optional<Player> player = playerrepository.findById(player_id);
         return player.orElse(null);
     }
+
+    public Boolean existsById(String player_id) {
+        return playerrepository.existsById(player_id);
+    }
+
+
 }

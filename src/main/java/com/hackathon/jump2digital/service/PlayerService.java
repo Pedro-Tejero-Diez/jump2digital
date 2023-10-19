@@ -5,8 +5,9 @@ import com.hackathon.jump2digital.document.Skin;
 
 import java.util.List;
 
-public interface Jump2DigitalService {
+public interface PlayerService {
     public List<Skin> readJsonFile();
     public void savePlayer(Player player);
     public void getPlayerById(String player_id);
+    public void existsById(String player_id);
 }

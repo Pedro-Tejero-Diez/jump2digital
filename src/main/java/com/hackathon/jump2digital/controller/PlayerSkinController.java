@@ -1,8 +1,7 @@
 package com.hackathon.jump2digital.controller;
 
 import com.hackathon.jump2digital.document.PlayerSkin;
-import com.hackathon.jump2digital.service.Jump2DigitalServiceImp;
-import com.hackathon.jump2digital.service.PlayerSkinService;
+import com.hackathon.jump2digital.service.PlayerServiceImp;
 import com.hackathon.jump2digital.service.PlayerSkinServiceImp;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class PlayerSkinController {
         @Autowired
         PlayerSkinServiceImp playerskinservice;
         @Autowired
-        Jump2DigitalServiceImp playerservice;
+        PlayerServiceImp playerservice;
 
         /*@GetMapping("/{jugador_id}/delete")
         public String borrarListaJugadas(@PathVariable(value = "jugador_id") String jugador_id) {

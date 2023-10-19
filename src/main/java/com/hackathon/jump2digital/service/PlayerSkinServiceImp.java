@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import com.hackathon.jump2digital.document.PlayerSkin;
 import com.hackathon.jump2digital.document.Player;
+import com.hackathon.jump2digital.document.Skin;
 import com.hackathon.jump2digital.repository.PlayerRepository;
 import com.hackathon.jump2digital.repository.PlayerSkinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class PlayerSkinServiceImp implements PlayerSkinService {
             return playerskinrepository.findAllByPlayer_id(player_id);
         }
 
-        @Override
+        /*@Override
         public void deletePlayerSkin(String playerSkin_id) {
 
             Optional<PlayerSkin> playerSkin = playerskinrepository.findById(playerSkin_id);
@@ -49,6 +50,12 @@ public class PlayerSkinServiceImp implements PlayerSkinService {
             }
             }
 
+        }*/
+
+        @Override
+        public void buySkinById(Player player, Skin skin){
+
+                playerskinrepository.save(new PlayerSkin(player, skin));
         }
 
         @Override
