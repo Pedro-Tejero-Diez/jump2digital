@@ -18,4 +18,4 @@ server:
 
 custom:
   jsonFile:
-    filePath: "C:/Users/pedro/Documents/PROGRAMACION/PROYECTOS/jump2digital/src/main/resources/skins.json"
+      filePath: file:./src/main/resources/skins.json

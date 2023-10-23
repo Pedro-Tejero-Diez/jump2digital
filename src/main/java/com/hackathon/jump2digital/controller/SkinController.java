@@ -33,10 +33,19 @@ public class SkinController {
         return "new_player";
     }
     @GetMapping("/login")
-    public String login (Model model) {
-        Player player = new Player();
-        model.addAttribute("player", player);
+    public String login (@ModelAttribute Skin skin, Model model) {
+        model.addAttribute("player", new Player());
         return "login";
+    }
+
+    @GetMapping("/lookforplayer")
+    public String lookforplayer (@ModelAttribute Player player, Model model) {
+
+        if (service.findByName(player.getName()) != null) {
+            model.addAttribute("playerskin",
+                    playerskinservice.getAllPlayerSkinByPlayer(player.getPlayer_id()));
+            return "playerskins";
+        } else return "not_found";
     }
 
     @PostMapping("/add")
@@ -51,18 +60,11 @@ public class SkinController {
         }
     }
 
-    @GetMapping("/{player_id}/available")
-    public String listSkins(@PathVariable(value = "player_id")
-                                String player_id, @ModelAttribute("player") Player player,
-                            Model model) throws IOException {
-        if (service.existsById(player_id)) {
+    @GetMapping("/available")
+    public String listSkins(Model model) throws IOException {
             List<Skin> skins = service.readJsonFile();
             model.addAttribute("skins", skins);
-            model.addAttribute("player", player);
             return "skins";
-        } else {
-                return "not_found";
-        }
     }
     @GetMapping("/skins/buy/")
     public String butSkinPlayer (@ModelAttribute ("player") Player player,

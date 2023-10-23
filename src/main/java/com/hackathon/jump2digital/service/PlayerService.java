@@ -10,4 +10,5 @@ public interface PlayerService {
     public void savePlayer(Player player);
     public void getPlayerById(String player_id);
     public void existsById(String player_id);
+    public Player findByName(String player_name);
 }

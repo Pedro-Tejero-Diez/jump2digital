@@ -33,8 +33,7 @@
         <td th:text="${Skin.price}"></td>
         <td th:text="${Skin.color}"></td>
         <td> <a class="btn btn-primary"
-                th:href="@{/skins/buy}" th:object="${Skin}, ${player}">BUY</a>
-                //th:href="@{/skins/{player_id}/buy/{id} (player_id=${player.player_id}, id=${Skin.id})}">BUY</a>
+                th:href="@{/skins/login}" th:object="${Skin}">BUY</a>
         </td>
     </tr>
     </tbody>

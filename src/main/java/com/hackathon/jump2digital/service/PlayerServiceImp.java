@@ -44,5 +44,10 @@ public class PlayerServiceImp {
         return playerrepository.existsById(player_id);
     }
 
+    public Player findByName(String player_name) {
+
+        return playerrepository.findByName(player_name);
+    }
+
 
 }

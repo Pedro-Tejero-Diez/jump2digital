@@ -13,7 +13,7 @@
     <hr>
     <h2>LOG IN</h2>
 
-    <form action="#" th:action="@{/skins/{id}/available (id=${player.player_id})}" th:object="${player}" method="GET">
+    <form action="#" th:action="@{/skins/lookforplayer}" th:object="${player}" method="GET">
 
         <input type="text" th:field="*{name}" placeholder="User Name" class="form-control mb-3 col-3">
 
