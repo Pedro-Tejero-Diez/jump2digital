@@ -2,48 +2,54 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="ISO-8859-1">
-    <title>jump2digital</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<meta charset="ISO-8859-1">
+	<title>jump2digital</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
 <body>
-<div class="container my-4">
-    <h1>GAME SKINS</h1>
-<div class="row">
-    <div class="col">
-        <h1>PLAYER SKINS:   <a th:text = "${player.name}" th:object="${player}"></a></h1>
-    </div>
-    <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
-        <form th:action="@{/skins/{id}/buy (id=${player.player_id})}" th:object="${player}" method="POST">
-            <input type="submit" class="btn btn-lg btn-primary" value="BUY SKIN">
-        </form>
+	<div class="container my-4">
+		<h1>GAME SKINS</h1>
+		<div class="row">
+			<div class="col">
+				<h1>PLAYER SKINS: <a th:text="${player.name}" th:object="${player}"></a></h1>
+			</div>
+			<div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+				<form th:action="@{/skins/{id}/buy (id=${player.player_id})}" th:object="${player}" method="POST">
+					<input type="submit" class="btn btn-lg btn-primary" value="BUY SKIN">
+				</form>
 
-        <form th:action="@{/Players/{id}/delete (id=${player.player_id})}" th:object="${player}">
-            <input type="submit" class="btn btn-lg btn-danger" value="DELETE SKIN">
-        </form>
-    </div>
-    <hr>
-    <table border="1" class="table table-striped table-bordered">
-        <thead class="thead-dark">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Author</th>
-        <th>Price</th>
-        <th>Color</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="PlayerSkin : ${playerskin}">
-        <td th:text="${PlayerSkin.playerSkin.id}"></td>
-        <td th:text="${PlayerSkin.playerSkin.name}"></td>
-        <td th:text="${PlayerSkin.playerSkin.description}"></td>
-        <td th:text="${PlayerSkin.playerSkin.author}"></td>
-        <td th:text="${PlayerSkin.playerSkin.price}"></td>
-        <td th:text="${PlayerSkin.playerSkin.color}"></td>
-    </tr>
-    </tbody>
-</div>
+				<form th:action="@{/Players/{id}/delete (id=${player.player_id})}" th:object="${player}">
+					<input type="submit" class="btn btn-lg btn-danger" value="DELETE SKIN">
+				</form>
+			</div>
+			<hr>
+			<table border="1" class="table table-striped table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Author</th>
+						<th>Price</th>
+						<th>Color</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="PlayerSkin : ${playerskin}">
+						<td th:text="${PlayerSkin.playerSkin.id}"></td>
+						<td th:text="${PlayerSkin.playerSkin.name}"></td>
+						<td th:text="${PlayerSkin.playerSkin.description}"></td>
+						<td th:text="${PlayerSkin.playerSkin.author}"></td>
+						<td th:text="${PlayerSkin.playerSkin.price}"></td>
+						<td th:text="${PlayerSkin.playerSkin.color}"></td>
+						<td> <a class="btn btn-primary" th:href="@{/skins/getskin/{id} (id=${playerskin.id})}"
+								th:object="${playerskin}">Select</a>
+						</td>
+						<td> <a class="btn btn-primary" th:href="@{/skins/delete{id} (id=${playerskin.id})}}"
+								th:object="${Skin}">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+		</div>

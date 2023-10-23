@@ -25,11 +25,11 @@ public class SkinController {
     PlayerServiceImp service;
     @Autowired
     PlayerSkinServiceImp playerskinservice;
-
+    
+    //WORKING
     @GetMapping("/new")
     public String newPlayer(Model model) {
-        Player player = new Player();
-        model.addAttribute("player", player);
+        model.addAttribute("player", new Player());
         return "new_player";
     }
     @GetMapping("/login")
@@ -51,15 +51,16 @@ public class SkinController {
     @PostMapping("/add")
     public String savePlayer(@ModelAttribute("player") Player player) {
         try {
+        	if (service.findPlayerById(player.getPlayer_id()).isEmpty()) {
             service.savePlayer(player);
-
             return "success";
+        	} else return "oldplayer";
 
         } catch (Exception e) {
             return "error";
         }
     }
-
+    //WORKING
     @GetMapping("/available")
     public String listSkins(Model model) throws IOException {
             List<Skin> skins = service.readJsonFile();
@@ -73,7 +74,7 @@ public class SkinController {
     model.addAttribute("player_id", player.getPlayer_id());
         return "redirect:/Skins/{player_id}/myskins";
     }
-
+    //WORKING
 	@GetMapping("/{player_id}/myskins")
 	public String playerSkins(@PathVariable(value = "player_id") 
 	String player_id, Model model) {
@@ -95,6 +96,9 @@ public class SkinController {
 			return "error";
 		}
 	}
+}
+
+	
     /* esto es el redirect que use para hacer una nueva jugada y guardarla
      * @PostMapping("/{player_id}/myskins")
     public String playerSkins(@PathVariable(value = "player_id") String player_id,
@@ -108,5 +112,3 @@ public class SkinController {
             } else return "error";
 
     }*/
-
-}

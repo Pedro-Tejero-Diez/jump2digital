@@ -48,6 +48,10 @@ public class PlayerServiceImp {
 
         return playerrepository.findByName(player_name);
     }
+    
+    public Optional<Player> findPlayerById (String player_id) {
+    	return playerrepository.findById(player_id);
+    }
 
 
 }

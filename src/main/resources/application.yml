@@ -15,7 +15,3 @@ spring:
 
 server:
   port: 8762
-
-custom:
-  jsonFile:
-      filePath: file:./src/main/resources/skins.json

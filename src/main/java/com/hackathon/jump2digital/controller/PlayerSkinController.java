@@ -32,11 +32,18 @@ public class PlayerSkinController {
             }
             return "exito";
         }*/
-
+        //WORKING
         @GetMapping("/{player_id}/playerskins")
         public String playerskinsscreen(@PathVariable("player_id") String id,
                                         @ModelAttribute("playerskin") List<PlayerSkin> playerskin,
                                      Model model) {
             return "playerskins";
+        }
+        
+        @GetMapping("getskin/{skin_id}")
+        public String playerskinsscreen(@PathVariable("playerskin_id") String id,
+                                        @ModelAttribute("playerskin") PlayerSkin playerskin,
+                                     Model model) {
+            return "playerskin";
         }
     }
