@@ -15,6 +15,8 @@
 
     <form action="#" th:action="@{/skins/lookforplayer}" th:object="${player}" method="GET">
 
+        <input type="hidden" th:field="{skin}" th:object="${skin}" />
+
         <input type="text" th:field="*{name}" placeholder="User Name" class="form-control mb-3 col-3">
 
         <input type="text" th:field="*{pwd}" placeholder="Password" class="form-control mb-3 col-3">
