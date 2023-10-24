@@ -32,9 +32,7 @@
         <td th:text="${Skin.author}"></td>
         <td th:text="${Skin.price}"></td>
         <td th:text="${Skin.color}"></td>
-        <td> <a class="btn btn-primary"
-                th:href="@{/skins/login}" th:object="${Skin}">BUY</a>
-        </td>
+       <td> <a class="btn btn-primary" th:href="@{/skins/login (skinId=${Skin.id})}">BUY</a></td>
     </tr>
     </tbody>
 </table>

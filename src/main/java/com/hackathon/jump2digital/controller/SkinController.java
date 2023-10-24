@@ -35,20 +35,25 @@ public class SkinController {
     }
 
     @GetMapping("/login")
-    public String login(@ModelAttribute Skin skin, Model model) {
+    public String login(@RequestParam ("skinId") String id, Model model) {
         model.addAttribute("player", new Player());
+        model.addAttribute("skinId", id);
         return "login";
     }
 
     @GetMapping("/lookforplayer")
     public String lookforplayer(@ModelAttribute Player player,
-                                @ModelAttribute Skin skin, RedirectAttributes ra,
-                                Model model) {
+                                @RequestParam String skinId, RedirectAttributes ra,
+                                Model model) throws IOException {
 
         if (service.findByName(player.getName()) != null) {
-          ra.addAttribute("player", player);
-          ra.addAttribute("skin", skin);
-            return "redirect: /skins/buy";
+        ra.addAttribute("player", player);
+        
+        int skinIdAsInt = Integer.parseInt(skinId);
+        String redirectUrl = "redirect:/skins/buy?skinId=" + skinIdAsInt;
+
+        return redirectUrl;
+            //return "redirect:skins/buy?skinId=skinId";
         } else return "new_player";
     }
 
@@ -71,6 +76,7 @@ public class SkinController {
         List<Skin> skins = service.readJsonFile();
         model.addAttribute("skins", skins);
         model.addAttribute("player", new Player());
+        model.addAttribute("Skin", new Skin());
         return "skins";
     }
 

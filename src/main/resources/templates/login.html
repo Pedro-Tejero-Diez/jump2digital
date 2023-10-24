@@ -15,7 +15,7 @@
 
     <form action="#" th:action="@{/skins/lookforplayer}" th:object="${player}" method="GET">
 
-        <input type="hidden" th:field="{skin}" th:object="${skin}" />
+       <input type="hidden" name="skinId" th:value="${skinId}" />
 
         <input type="text" th:field="*{name}" placeholder="User Name" class="form-control mb-3 col-3">
 

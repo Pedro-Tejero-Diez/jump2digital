@@ -6,6 +6,7 @@ import com.hackathon.jump2digital.document.Skin;
 import com.hackathon.jump2digital.service.PlayerServiceImp;
 import com.hackathon.jump2digital.service.PlayerSkinServiceImp;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/Skins")
+@RequestMapping("/skins")
 public class PlayerSkinController {
 
         @Autowired
@@ -42,16 +43,18 @@ public class PlayerSkinController {
         }
         
         @GetMapping("getskin/{skin_id}")
-        public String playerskinsscreen(@PathVariable("playerskin_id") String id,
+        public String playerskinsscreen(@PathVariable("skin_id") String id,
                                         @ModelAttribute("playerskin") PlayerSkin playerskin,
                                      Model model) {
             return "playerskin";
         }
 
-    @PostMapping("/skins/buy")
+    @GetMapping("/buy")
     public String butSkinPlayer(@ModelAttribute("player") Player player,
-                                @ModelAttribute("skin") Skin skin,
-                                RedirectAttributes ra) {
+    		@RequestParam String skinId,
+                                RedirectAttributes ra) throws IOException {
+    	int skinIdAsInt = Integer.parseInt(skinId);
+    	Skin skin = playerservice.readJsonFile().get(skinIdAsInt);
         playerskinservice.buySkinById(player, skin);
         ra.addAttribute("player_id", player.getPlayer_id());
         return "redirect:/Skins/{player_id}/myskins";
