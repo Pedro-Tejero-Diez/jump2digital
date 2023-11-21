@@ -9,6 +9,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,18 +27,18 @@ class BarrioControllerTest {
     private Barrio b2;
     private Barrio b3;
 
-    @BeforeEach
+   /* @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
         b1 = new Barrio();
         b2 = new Barrio();
         b3 = new Barrio();
-    }
+    }*/
 
     @Test
-    void getAllBarriosControllerTest() {
+    void getAllBarriosControllerTest() throws IOException {
         List<Barrio> barrios = Arrays.asList(b1, b2, b3);
-        when(barrioService.getAllBarrios()).thenReturn(barrios);
+        when(barrioService.readJsonFile()).thenReturn(barrios);
 
         ResponseEntity<List<Barrio>> response = barrioController.getAllBarriosController();
 

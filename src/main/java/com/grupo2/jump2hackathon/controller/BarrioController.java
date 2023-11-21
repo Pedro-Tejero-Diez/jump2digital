@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -25,9 +26,13 @@ public class BarrioController {
 
     @GetMapping("/all")
     @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
-    public ResponseEntity<List<Barrio>> getAllBarriosController(){
-        return new ResponseEntity<>(barrioService.getAllBarrios(), HttpStatus.OK);
+    public ResponseEntity<List<Barrio>> getAllBarriosController() throws IOException {
+        return new ResponseEntity<>(barrioService.readJsonFile(), HttpStatus.OK);
     }
 
-
+    @GetMapping("/allbarrios")
+    @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
+    public ResponseEntity<List<Barrio>> getAllBarrios(){
+        return new ResponseEntity<>(barrioService.getAllBarrios(), HttpStatus.OK);
+    }
 }
