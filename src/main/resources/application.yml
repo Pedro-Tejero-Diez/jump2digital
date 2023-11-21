@@ -2,5 +2,8 @@ spring:
   data:
     mongodb:
       uuid-representation: standard
-      uri: mongodb+srv://grupo2:w8IIEs2mmNhTwdIN@jupm2digital.uikcavy.mongodb.net/
-      database: jump2digital
+      # uri: mongodb+srv://grupo2:w8IIEs2mmNhTwdIN@jupm2digital.uikcavy.mongodb.net/
+      # uri: mongodb://admin_challenge:BYBcMJEEWw5egRUo@localhost:27017/Skins
+      uri: mongodb://localhost:27017
+      database: Barrios
+
