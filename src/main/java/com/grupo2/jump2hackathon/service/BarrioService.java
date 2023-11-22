@@ -21,7 +21,7 @@ public class BarrioService {
     private final BarrioRepository barrioRepository;
 
     public List<Barrio> readJsonFile() throws IOException {
-        Resource resource = new ClassPathResource("barrios.json");
+        Resource resource = new ClassPathResource("/barris_geo_json.json");
         ObjectMapper objectMapper = new ObjectMapper();
         InputStream inputStream = resource.getInputStream();
         return objectMapper.readValue(inputStream,
