@@ -2,6 +2,7 @@ package com.grupo2.jump2hackathon.documents;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -26,26 +27,26 @@ public class Barrio {
     private String nomDistricte;
     private String codiBarri;
     private String nomBarri;
-    @Field(name = "nAltres")
-    private Integer nAltres;
-    @Field(name = "nAutomocio")
-    private Integer nAutomocio;
-    @Field(name = "nEquipamentPersonal")
-    private Integer nEquipamentPersonal;
-    @Field(name = "nLocalBuit")
-    private Integer nLocalBuit;
-    @Field(name = "nOciCultura")
-    private Integer nOciCultura;
-    @Field(name = "nParamentLlar")
-    private Integer nParamentLlar;
-    @Field(name = "nQuotidiaAlimentari")
-    private Integer nQuotidiaAlimentari;
-    @Field(name = "nQuotidiaNoAlimentari")
-    private Integer nQuotidiaNoAlimentari;
-    @Field(name = "nServeis")
-    private Integer nServeis;
-    private Integer preuMitja;
+    @JsonProperty("nAltres")
+    private int nAltres;
+    @JsonProperty("nAutomocio")
+    private int nAutomocio;
+    @JsonProperty("nEquipamentPersonal")
+    private int nEquipamentPersonal;
+    @JsonProperty("nLocalBuit")
+    private int nLocalBuit;
+    @JsonProperty("nOciCultura")
+    private int nOciCultura;
+    @JsonProperty("nParamentLlar")
+    private int nParamentLlar;
+    @JsonProperty("nQuotidiaAlimentari")
+    private int nQuotidiaAlimentari;
+    @JsonProperty("nQuotidiaNoAlimentari")
+    private int nQuotidiaNoAlimentari;
+    @JsonProperty("nServeis")
+    private int nServeis;
+    private int preuMitja;
     private long Anio;
-    private Integer preuM2;
+    private int preuM2;
     private Poligon poligon;
 }
