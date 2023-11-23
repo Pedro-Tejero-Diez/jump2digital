@@ -21,12 +21,18 @@ public class BarrioService {
     private final BarrioRepository barrioRepository;
 
     public List<Barrio> readJsonFile() throws IOException {
-        Resource resource = new ClassPathResource("/barris_geo_json.json");
+        try {
+        Resource resource = new ClassPathResource("/barrisTotal.json");
         ObjectMapper objectMapper = new ObjectMapper();
         InputStream inputStream = resource.getInputStream();
         return objectMapper.readValue(inputStream,
                 new TypeReference<List<Barrio>>() {
                 });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
     public List<Barrio> getAllBarrios() {
         return barrioRepository.findAll();

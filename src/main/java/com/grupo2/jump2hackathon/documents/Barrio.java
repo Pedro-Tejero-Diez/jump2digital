@@ -1,11 +1,12 @@
 package com.grupo2.jump2hackathon.documents;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.UUID;
 
@@ -14,31 +15,37 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
+@Getter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Barrio {
-    private UUID uuid;
-    private String codiBarri;
-    private String nomBarri;
+    @MongoId
+    @JsonIgnore
+    private ObjectId _id;
     private String codiDistricte;
     private String nomDistricte;
-    private Poligono poligono;
-    @Field(name= "naltres")
+    private String codiBarri;
+    private String nomBarri;
+    @Field(name = "nAltres")
     private Integer nAltres;
-    @Field(name= "nautomocio")
+    @Field(name = "nAutomocio")
     private Integer nAutomocio;
-    @Field(name= "nequipamentPersonal")
+    @Field(name = "nEquipamentPersonal")
     private Integer nEquipamentPersonal;
-    @Field(name= "nlocalBuit")
+    @Field(name = "nLocalBuit")
     private Integer nLocalBuit;
-    @Field(name= "nociCultura")
+    @Field(name = "nOciCultura")
     private Integer nOciCultura;
-    @Field(name= "nparamentLlar")
+    @Field(name = "nParamentLlar")
     private Integer nParamentLlar;
-    @Field(name= "nquotidiaAlimentari")
+    @Field(name = "nQuotidiaAlimentari")
     private Integer nQuotidiaAlimentari;
-    @Field(name= "nquotidiaNoAlimentari")
+    @Field(name = "nQuotidiaNoAlimentari")
     private Integer nQuotidiaNoAlimentari;
-    @Field(name= "nserveis")
+    @Field(name = "nServeis")
     private Integer nServeis;
-    private Integer preuM2;
     private Integer preuMitja;
+    private long Anio;
+    private Integer preuM2;
+    private Poligon poligon;
 }

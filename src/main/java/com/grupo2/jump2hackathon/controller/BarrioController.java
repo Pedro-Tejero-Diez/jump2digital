@@ -1,7 +1,7 @@
 package com.grupo2.jump2hackathon.controller;
 
 import com.grupo2.jump2hackathon.documents.Barrio;
-import com.grupo2.jump2hackathon.documents.Poligono;
+import com.grupo2.jump2hackathon.documents.Poligon;
 import com.grupo2.jump2hackathon.service.BarrioService;
 
 import jakarta.websocket.server.PathParam;
